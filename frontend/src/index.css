@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap');
+
+:root {
+  --font-primary: 'Nunito', sans-serif;
+  --bg-gradient: linear-gradient(135deg, #FFF8F2 0%, #FFEFE5 100%);
+  --panel-bg: rgba(255, 255, 255, 0.85);
+  --panel-border: #ECECEC;
+  --input-bg: #FFFFFF;
+  --parallax-overlay: linear-gradient(to bottom, rgba(255,255,255,0.92) 0%, rgba(255,230,200,0.7) 50%, rgba(255,255,255,0.92) 100%);
+  --primary-color: #FF7A00;
+  --primary-hover: #E06B00;
+  --success-color: #4caf50;
+  --text-main: #222222;
+  --text-muted: #666666;
+  --text-white: #ffffff;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 10px 25px rgba(255, 122, 0, 0.12);
+  --glass-blur: blur(16px);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-theme {
+  --bg-gradient: linear-gradient(135deg, #141414 0%, #1f1f1f 100%);
+  --panel-bg: rgba(31, 31, 31, 0.85);
+  --panel-border: #333333;
+  --input-bg: #2a2a2a;
+  --parallax-overlay: linear-gradient(to bottom, rgba(31,31,31,0.9) 0%, rgba(31,31,31,0.7) 50%, rgba(31,31,31,0.95) 100%);
+  --text-main: #f0f0f0;
+  --text-muted: #aaaaaa;
+  --shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  --glass-blur: blur(16px);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: #FFF8F2;
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  min-height: 100vh;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Glassmorphism Panel style */
+.glass-panel {
+  background: var(--panel-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 24px;
+  transition: var(--transition);
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 87, 34, 0.3);
+}
+
+/* Buttons */
+.btn {
+  font-family: var(--font-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--text-white);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 8px;
+}
+
+.btn:disabled {
+  background: var(--panel-border) !important;
+  color: var(--text-muted) !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+  transform: none !important;
+  border-color: transparent !important;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #ff8a65 100%);
+  box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 87, 34, 0.5);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, #ff7043 100%);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #f44336 0%, #ff5252 100%);
+}
+
+.btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+}
+
+.btn-warning {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+.btn-warning:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+}
+
+.btn-info {
+  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+.btn-info:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+}
+
+/* Form controls */
+.form-group {
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: var(--input-bg);
+  border: 1px solid var(--panel-border);
+  color: var(--text-main);
+  font-family: var(--font-primary);
+  font-size: 15px;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.15);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* ==========================================================
+   DARK MODE — Safety overrides: ensure all text is visible
+   ========================================================== */
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select {
+  color: var(--text-main);
+  background: var(--input-bg);
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* Ensure any hardcoded light-mode text (#333, #555, #666, #999 etc.)
+   gets overridden in dark mode so it's always readable */
+body.dark-theme p,
+body.dark-theme span:not([class*="badge"]):not([class*="tag"]),
+body.dark-theme li,
+body.dark-theme td,
+body.dark-theme th,
+body.dark-theme label {
+  color: inherit;
+}
+
+/* Product cards, modals, panels, admin cards and chatbot in dark mode */
+body.dark-theme .product-card,
+body.dark-theme .dbs-product-card,
+body.dark-theme .glass-card,
+body.dark-theme .testimonial-card,
+body.dark-theme .fc-card,
+body.dark-theme .chatbot-window,
+body.dark-theme .admin-form-card,
+body.dark-theme .admin-list,
+body.dark-theme .admin-products-table-container,
+body.dark-theme .modal-content {
+  background: var(--panel-bg);
+  border-color: var(--panel-border);
+}
+
+/* Chatbot Specific */
+body.dark-theme .bot .message-content {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+}
+body.dark-theme .chatbot-input-area {
+  background: rgba(0, 0, 0, 0.2);
+  border-top-color: var(--panel-border);
+}
+body.dark-theme .chatbot-input-area input {
+  background: var(--input-bg);
+  color: var(--text-main);
+  border-color: var(--panel-border);
+}
+
+/* Admin Table Specific */
+body.dark-theme .admin-table th {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+}
+body.dark-theme .admin-table td {
+  border-bottom-color: var(--panel-border);
+}
+body.dark-theme .admin-table tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+body.dark-theme .product-name,
+body.dark-theme .product-category,
+body.dark-theme .dbs-product-name,
+body.dark-theme .fc-card h4,
+body.dark-theme .glass-card h3,
+body.dark-theme .glass-card p,
+body.dark-theme .testimonial-text,
+body.dark-theme .author-info h4 {
+  color: var(--text-main);
+}
+
+body.dark-theme .product-price,
+body.dark-theme .dbs-new-price {
+  color: var(--primary-color);
+}
+
+body.dark-theme .dbs-old-price {
+  color: var(--text-muted);
+}
+
+/* Sort filter buttons and category filter buttons */
+body.dark-theme [style*="background: #fff"]:not(.phone-mockup),
+body.dark-theme [style*="background: rgb(255, 255, 255)"]:not(.phone-mockup) {
+  background: var(--panel-bg) !important;
+  color: var(--text-main) !important;
+}
+
+body.dark-theme [style*="#f1f3f5"],
+body.dark-theme [style*="#f5f5f5"] {
+  background: rgba(255,255,255,0.05) !important;
+}
+
+/* Review & user name components */
+body.dark-theme .premium-user-name,
+body.dark-theme .premium-review-comment,
+body.dark-theme .premium-user-date,
+body.dark-theme .premium-empty-text {
+  color: var(--text-main);
+}
+
+
+
+/* --- FORCE FIX VOUCHER CARDS (MÃ GIẢM GIÁ) --- */
+.promo-card {
+  background: rgba(255, 138, 0, 0.05) !important;
+  border: 1px dashed rgba(255, 138, 0, 0.6) !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  width: 100% !important;
+}
+
+body.dark-theme .promo-card {
+  background: rgba(255, 138, 0, 0.1) !important;
+}
+
+.promo-card::before, .promo-card::after {
+  display: none !important;
+}
+
+.promo-code-badge {
+  display: inline-block !important;
+  background: linear-gradient(90deg, #ff8a00, #e52e71) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  padding: 6px 14px !important;
+  border-radius: 20px !important;
+  font-weight: 800 !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  box-shadow: 0 4px 10px rgba(229, 46, 113, 0.3) !important;
+}
+
+.promo-discount-text {
+  color: #ff8a00 !important;
+  -webkit-text-fill-color: #ff8a00 !important;
+  font-weight: 900 !important;
+  font-size: 16px !important;
+}
